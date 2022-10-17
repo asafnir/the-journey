@@ -9,7 +9,7 @@ function About() {
     <div className="py-[60px] md:py-[82px] relative">
       <img
         src={aboutPattren}
-        className="absolute right-0 top-0 w-full h-full object-cover z-[-2]"
+        className="absolute right-0 top-0 w-full  object-cover z-[-2]"
         alt=""
       />
       <div className="container">

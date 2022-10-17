@@ -35,13 +35,13 @@ function Guides() {
 
       <div className="container">
         <Title className="text-white text-center mb-[30px] md:mb-[76px]">
-          PSYCHEDELIC GUIDES
+          THE TEACHERS 
         </Title>
 
         <main className="grid sm:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(4,_1fr)] gap-4 xl:gap-4 max-w-[1000px] w-full mx-auto">
-          <GuideCard img={img1} title="2C-B" />
-          <GuideCard img={img2} title="4-Aco-DMT" />
-          <GuideCard img={img3} title="5-MEO-DMT" />
+          <GuideCard img={img1} title="2C-B" dec="2C-B is a psychedelic drug of the 2C family"/>
+          <GuideCard img={img2} title="4-Aco-DMT" dec="Synthetic mushrooms, It is structurally related to psilocybin and psilocin, the active ingredient in psilocybin mushrooms"/>
+          <GuideCard img={img3} title="5-MEO-DMT" link="https://psychonautwiki.org/wiki/5-MeO-DMT" dec="Distributed in a wide variety of plant species as well as in the venom of a single toad species (Bufo Alvaris)"/>
           <GuideCard img={img4} title="AMANITA MUSCARIA" />
 
           <GuideCard img={img5} title="AYAHUASCA" />

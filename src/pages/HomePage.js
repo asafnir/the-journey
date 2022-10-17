@@ -16,7 +16,7 @@ function HomePage() {
       <About />
       <GetStarted />
       <Guides />
-      <FormAndTeam />
+      {/* <FormAndTeam /> */}
       <Faq />
       <Footer />
     </div>

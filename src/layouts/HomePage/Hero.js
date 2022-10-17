@@ -15,13 +15,11 @@ function Hero() {
       <div className="h-screen container flex flex-col items-center justify-center">
         <div className="max-w-[809.02px] w-full text-center">
           <Title className="text-white text-center leading-[1.4] lg:leading-[60px] tracking-[-2px] mb-6">
-            About <br /> The Journey
+            Share the knowledge of your journeys.
           </Title>
 
           <Subtitle className="text-center mb-10 md:mb-16">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+            For the 7 generation to come and for your big experience to share
           </Subtitle>
 
           <Button title="Get Started" />

@@ -14,7 +14,7 @@ function GetStarted() {
       />
       <div className="container h-screen flex items-center justify-center">
         <div className="max-w-[846px] mx-auto text-center">
-          <Title className="text-black text-center mb-4">Ayahuasca</Title>
+          <Title className="text-black text-center mb-4">Share the resource with the one that carry the medicine </Title>
 
           <Subtitle className="black opacity-[.6] text-black text-center mb-[34px]">
             BiLorem Ipsum is simply dummy text of the printing and typesetting

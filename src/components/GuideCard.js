@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuideCard({ title, img }) {
+function GuideCard({ title, img, dec, link }) {
   // const [isOpen, setIsOpen] = useState(false);
   // const menuRef = useRef(null);
 
@@ -22,7 +22,8 @@ function GuideCard({ title, img }) {
         className="absolute top-0 left-0 w-full h-full bg-black p-4 opacity-0 transition-all duration-[.4s] 
       ease-[ease] group-hover:opacity-[1] flex items-center justify-center flex-col"
       >
-        <p className="">Lorem ipsum dolor sit amet consectetur,</p>
+        <p className="mb-4">{dec}</p>
+        <a href={link} className="text-orange-500">More information</a>
       </div>
       <img
         src={img}

@@ -2,6 +2,7 @@ import OutsideClickDetector from "hooks/OutsideClickDetector";
 import React, { useEffect, useState } from "react";
 import { GrFormClose } from "react-icons/gr";
 import { IoMenu } from "react-icons/io5";
+import Logo from "assets/images/logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ function Navbar() {
 
   return (
     <div
-      className={`fixed flex items-center top-0 left-0 w-full z-[80] transition-all duration-[.3s] ease-[ease] ${
+      className={`absolute flex items-center top-0 left-0 w-full z-[80] transition-all duration-[.3s] ease-[ease] ${
         isScrolled
           ? "bg-gray-primary h-[70px] sm:h-[100px] shadow-[0_2px_10px_rgba(255,255,255,0.1)]"
           : "h-[100px] sm:h-[120px]"
@@ -41,10 +42,11 @@ function Navbar() {
               : "text-[10px] lg:text-[12px] xl:text-[16px]"
           }`}
         >
-          <p className="font-merienda text-[3em] font-bold">The</p>
-          <p className="font-merienda text-[3em] font-bold pl-4 text-gradient">
-            journey
-          </p>
+        <img
+          src={Logo}
+          className="w-1/2"
+          alt=""
+        />
         </div>
 
         <div
@@ -61,17 +63,17 @@ function Navbar() {
           </button>
 
           <div className="space-y-2 lg:space-y-0 lg:flex lg:space-x-[32px] lg:items-center">
-            <p className="text-[16px] xl:text-[18px] text-gradient font-[800] uppercase cursor-pointer">
+            <a className="text-[16px] xl:text-[18px] text-gradient font-[800] uppercase cursor-pointer">
               Home
+            </a>
+            <a className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
+              About
+            </a>
+            <p className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
+              How
             </p>
             <p className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Launchpad
-            </p>
-            <p className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Studio
-            </p>
-            <p className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Labs
+              Journeys
             </p>
           </div>
 

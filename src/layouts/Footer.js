@@ -3,16 +3,18 @@ import React from "react";
 import { FaTwitter } from "react-icons/fa";
 import { ImFacebook } from "react-icons/im";
 import daimond from "assets/icons/daimond.svg";
+import Logo from "assets/images/logo.png";
 
 function Footer() {
   return (
     <div className="bg-[#0F172A] pb-8">
       <div className="container py-12 mb-0 sm:mb-8 flex items-center justify-between flex-col lg:flex-row space-y-6 lg:space-y-0">
         <div className="flex text-[10px] lg:text-[12px] xl:text-[16px] items-center">
-          <p className="font-merienda text-[3em] font-bold">The</p>
-          <p className="font-merienda text-[3em] font-bold pl-4 text-gradient">
-            journey
-          </p>
+                 <img
+          src={Logo}
+          className="w-1/2"
+          alt=""
+        />
         </div>
 
         <div className="flex space-y-6 lg:space-y-[0px] space-x-[0px] lg:space-x-[44px] flex-col lg:flex-row items-center">
@@ -21,13 +23,16 @@ function Footer() {
               Home
             </p>
             <p className="text-[14px] sm:text-[16px] xl:text-[18px]   text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Launchpad
+              About
             </p>
             <p className="text-[14px] sm:text-[16px] xl:text-[18px]   text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Studio
+              How
             </p>
             <p className="text-[14px] sm:text-[16px] xl:text-[18px]   text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Labs
+              Team
+            </p>
+            <p className="text-[14px] sm:text-[16px] xl:text-[18px]   text-[#BCBCBC] font-[500] uppercase cursor-pointer">
+              FAQ
             </p>
           </div>
 
@@ -39,7 +44,7 @@ function Footer() {
         </div>
       </div>
       <p className="text-center text-[14px] lg:text-lg text-white">
-        Copyright © 2020
+        Copyright © 2022
       </p>
     </div>
   );

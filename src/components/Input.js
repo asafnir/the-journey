@@ -1,13 +1,13 @@
 import React from "react";
 
-function Input({ htmlFor }) {
+function Input({ htmlFor, label }) {
   return (
     <div className="max-w-[652px] w-full mx-auto">
       <label
         htmlFor={htmlFor}
         className="text-base md:text-lg text-white font-medium mb-[10px] cursor-pointer inline-block"
       >
-        Select box
+        {label} 
       </label>
       <input
         type="text"
