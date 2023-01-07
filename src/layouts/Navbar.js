@@ -1,11 +1,14 @@
 import OutsideClickDetector from "hooks/OutsideClickDetector";
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { GrFormClose } from "react-icons/gr";
 import { IoMenu } from "react-icons/io5";
 import Logo from "assets/images/logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const locatoin = useLocation();
+  const userParams = locatoin.pathname ? locatoin.pathname?.split("/") : [];
   const [isScrolled, setIsScrolled] = useState(false);
 
   const sidebarRef = OutsideClickDetector(() => setIsOpen(false));
@@ -42,11 +45,7 @@ function Navbar() {
               : "text-[10px] lg:text-[12px] xl:text-[16px]"
           }`}
         >
-        <img
-          src={Logo}
-          className="w-1/2"
-          alt=""
-        />
+          <span className="text-5xl font-serif">Journeys</span>
         </div>
 
         <div
@@ -62,28 +61,42 @@ function Navbar() {
             <GrFormClose size={30} />
           </button>
 
-          <div className="space-y-2 lg:space-y-0 lg:flex lg:space-x-[32px] lg:items-center">
-            <a className="text-[16px] xl:text-[18px] text-gradient font-[800] uppercase cursor-pointer">
-              Home
-            </a>
-            <a className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              About
-            </a>
-            <p className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              How
-            </p>
-            <p className="text-[16px] xl:text-[18px]  text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
-              Journeys
-            </p>
-          </div>
-
+          <ul className="items-center text-xl tracking-wide space-x-[24px] hidden md:flex">
+             <li>
+              <Link to={"/artists"}>
+                <a
+                  className={
+                    userParams[1] == "artists"
+                      ? "text-red"
+                      : "text-primary"
+                  }
+                >
+                  Artists
+                </a>
+              </Link>
+            </li>          
+            <li>
+              <Link to={"/journeys"}>
+                <a
+                  className={
+                    userParams[1] == "journeys"
+                      ? "text-red"
+                      : "text-primary"
+                  }
+                >
+                  Journeys
+                </a>
+              </Link>
+            </li>               
+          </ul>
           <div className="flex flex-col-reverse lg:flex-row lg:flex lg:items-center lg:space-x-[32px]">
-            <button className="w-full lg:w-auto cursor-pointer py-[12px] px-[26px] xl:px-[36px] rounded-[10px] border-[1px] border-solid border-[#D7D7D7]">
-              <p className="text-[16px] xl:text-[18px] text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase ">
-                create
-              </p>
-            </button>
-
+            <Link to={"/create"}>
+              <a alt="create" className="w-full lg:w-auto cursor-pointer py-[12px] px-[26px] xl:px-[36px] rounded-[10px] border-[1px] border-solid border-[#D7D7D7]">
+                <span className="text-[16px] xl:text-[18px] text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase ">
+                  create
+                </span>
+              </a>
+            </Link>
             <p className="mb-3 flex-1 lg:mb-0 text-[16px] xl:text-[18px] text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase cursor-pointer">
               sign in
             </p>

@@ -1,4 +1,5 @@
-import HomePage from "pages/HomePage";
+import HomePage from "./pages/HomePage";
+import CreatePage from "./pages/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/create" element={<CreatePage />} />
       </Routes>
     </Router>
   );
