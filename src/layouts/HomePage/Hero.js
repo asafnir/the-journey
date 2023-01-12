@@ -1,8 +1,6 @@
 import React from "react";
 import img from "assets/images/hero-bg.png";
 import Button from "components/Button";
-import Title from "components/Title";
-import Subtitle from "components/Subtitle";
 
 function Hero() {
   return (
@@ -14,13 +12,13 @@ function Hero() {
       />
       <div className="h-screen container flex flex-col items-center justify-center">
         <div className="max-w-[809.02px] w-full text-center">
-          <Title className="text-white text-center leading-[1.4] lg:leading-[60px] tracking-[-2px] mb-6">
-            Share the knowledge of your journeys.
-          </Title>
+          <p className="text-white text-center mb-6 text-7xl font-serif">
+            Share the knowledge <br/>of your journeys.
+          </p>
 
-          <Subtitle className="text-center mb-10 md:mb-16">
-            For the 7 generation to come and for your big experience to share
-          </Subtitle>
+          <p className="text-center mb-10 md:mb-16 text-3xl">
+            For the 7 generation to come and for<br/> your big experience to share
+          </p>
 
           <Button title="Get Started" />
         </div>

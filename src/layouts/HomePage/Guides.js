@@ -34,7 +34,7 @@ function Guides() {
       />
 
       <div className="container">
-        <Title className="text-white text-center mb-[30px] md:mb-[76px]">
+        <Title className="text-white text-center mb-[30px] md:mb-[76px] font-serif">
           THE TEACHERS 
         </Title>
 

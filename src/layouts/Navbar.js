@@ -45,7 +45,9 @@ function Navbar() {
               : "text-[10px] lg:text-[12px] xl:text-[16px]"
           }`}
         >
-          <span className="text-5xl font-serif">Journeys</span>
+          <Link to={"/"}>
+            <span className="text-5xl font-serif">Journeys</span>
+            </Link>
         </div>
 
         <div
