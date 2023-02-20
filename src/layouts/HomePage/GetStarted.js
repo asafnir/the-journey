@@ -6,7 +6,7 @@ import Subtitle from "components/Subtitle";
 
 function GetStarted() {
   return (
-    <div className="bg-white relative z-[1]">
+    <div className="bg-white relative z-[1] py-24">
       <img
         src={pattren}
         className="absolute inset-0 h-full w-full object-cover z-[-1]"

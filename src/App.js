@@ -1,20 +1,44 @@
+import { useState, useEffect } from 'react'
+import { PrivateRoute } from './components/PrivateRoute'
+import { supabase } from './lib/supabaseClient'
+import { AuthProvider } from './contexts/Auth'
 import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/Create";
 import ArtistsPage from "./pages/Artists";
 import ArtistPage from "./pages/Artist";
 import JourneysPage from "./pages/Journeys";
+import AuthPage from "./pages/Auth"
+import AccountPage from "./pages/Account"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreatePage />} />
-        <Route path="/artists" element={<ArtistsPage />} />
-        <Route path="/artist" element={<ArtistPage />} />
-        <Route path="/journeys" element={<JourneysPage />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/create"
+            element={
+              <PrivateRoute>
+                <CreatePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <PrivateRoute>
+                <AccountPage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/artists" element={<ArtistsPage />} />
+          <Route path="/artist" element={<ArtistPage />} />
+          <Route path="/journeys" element={<JourneysPage />} />
+          <Route path="/auth" element={<AuthPage />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }

@@ -9,31 +9,31 @@ const JOURNEYS = [
     story: "American visual artist, author, teacher, and Vajrayana practitioner known for creating spiritual and psychedelic paintings.[1] He works in multiple forms including performance art, process art, installation art, sculpture, visionary art, and painting",
   },
   {
-    id: '1',
+    id: '2',
     title: "Long time",
     image: "https://cdn.mos.cms.futurecdn.net/dEbFeK75AEXnEvPw5yvLwi-970-80.jpg.webp",
     story: "American visual artist, author, teacher, and Vajrayana practitioner known for creating spiritual and psychedelic paintings.[1] He works in multiple forms including performance art, process art, installation art, sculpture, visionary art, and painting",
   },
   {
-    id: '1',
+    id: '3',
     title: "Long time",
     image: "https://cdn.mos.cms.futurecdn.net/dEbFeK75AEXnEvPw5yvLwi-970-80.jpg.webp",
     story: "American visual artist, author, teacher, and Vajrayana practitioner known for creating spiritual and psychedelic paintings.[1] He works in multiple forms including performance art, process art, installation art, sculpture, visionary art, and painting",
   },
    {
-    id: '1',
+    id: '4',
     title: "Long time",
     image: "https://cdn.mos.cms.futurecdn.net/dEbFeK75AEXnEvPw5yvLwi-970-80.jpg.webp",
     story: "American visual artist, author, teacher, and Vajrayana practitioner known for creating spiritual and psychedelic paintings.[1] He works in multiple forms including performance art, process art, installation art, sculpture, visionary art, and painting",
   },
   {
-    id: '1',
+    id: '5',
     title: "Long time",
     image: "https://cdn.mos.cms.futurecdn.net/dEbFeK75AEXnEvPw5yvLwi-970-80.jpg.webp",
     story: "American visual artist, author, teacher, and Vajrayana practitioner known for creating spiritual and psychedelic paintings.[1] He works in multiple forms including performance art, process art, installation art, sculpture, visionary art, and painting",
   },
   {
-    id: '1',
+    id: '6',
     title: "Long time",
     image: "https://cdn.mos.cms.futurecdn.net/dEbFeK75AEXnEvPw5yvLwi-970-80.jpg.webp",
     story: "American visual artist, author, teacher, and Vajrayana practitioner known for creating spiritual and psychedelic paintings.[1] He works in multiple forms including performance art, process art, installation art, sculpture, visionary art, and painting",
@@ -48,7 +48,7 @@ const Journeys = () => {
       </div>
       <div className="grid grid-cols-4 gap-8">
         {JOURNEYS.map(journey => 
-          <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white" key={journey.id }>
               <img class="w-full" src={journey.image} alt="Sunset in the mountains"/>
               <div class="px-6">
               <div class="font-bold text-xl">{journey.title}</div>
