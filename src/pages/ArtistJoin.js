@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from 'lib/supabaseClient'
+import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter} from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import MainLayout from "layouts/MainLayout"
 
@@ -7,38 +8,36 @@ export default function Auth({ props }) {
     const location = useLocation();
     const [success, setSuccess] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [email, setEmail] = useState('')
-    const [data, setData] = useState('')
-    const [password, setPassword] = useState('')
+	const [profile, setProfile] = useState({
+		email: "",
+		social_media: { instagram: "", facebook: "", twitter: "" },
+		bio: "",
+		name: "",
+		website: ""
+	})
+	const socialHandler = (
+		e: React.FormEvent<HTMLInputElement | HTMLSelectElement>
+	): void => {
+		setProfile({
+		...profile.social_media,
+			social_media: {
+				[e.currentTarget.name]: e.currentTarget.value
+			}
+		});
+	};
 
-	const getURL = () => {
-		let url = process.env.REACT_APP_CLIENT_URL
-		url = url.includes('http') ? url : `https://${url}`;
-		url = url.charAt(url.length - 1) === '/' ? url : `${url}/`;
-		url = url + 'account'
-		return url;
+	const handler = (
+		e: React.FormEvent<HTMLInputElement | HTMLSelectElement>
+	): void => {
+		setProfile({
+		...profile,
+		[e.currentTarget.name]: e.currentTarget.value,
+		});
 	};
 	
-	const handleLogin = async (e) => {
-		e.preventDefault()
+	const submit = () => {
 
-		try {
-			setLoading(true)
-			const { error } = await supabase.auth.signInWithOtp({
-				email,
-				options: {
-    				redirectTo: getURL()
-  				}
-  			})
-			if (error) throw error
-			setSuccess(true)
-		} catch (error) {
-			console.log(error)
-		} finally {
-			setLoading(false)
-		}
 	}
-
   	return (
 		<MainLayout>
 		<div className="w-full">
@@ -50,23 +49,98 @@ export default function Auth({ props }) {
 				</div>
 				:
 				<>
-					<p className="text-2xl text-white text-center">Artist join form</p>
+					<p className="text-3xl text-white text-center">Artist join form</p>
+					<p className="text-2xl text-white text-center">Join journeys and bring pepole visions into art</p>
 					{loading ? <p className="text-2xl text-white text-center">Sending magic link...</p> : (
-						<form className="mt-8 space-y-6 w-full max-w-md m-auto" onSubmit={handleLogin}>
+						<form className="mt-8 space-y-6 w-full max-w-md m-auto" onSubmit={submit}>
 						<div class="-space-y-px rounded-md shadow-sm">
-						<label htmlFor="email">Email</label>
+							<label htmlFor="email">Name</label>
+							<input
+								required
+								id="name"
+								className="relative block w-full appearance-none rounded-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+								name="name"
+								placeholder="Name"
+								value={profile.name}
+								onChange={handler}
+							/>
+						</div>
+						<div class="-space-y-px rounded-md shadow-sm">
+							<label htmlFor="email">Email</label>
 							<input
 								required
 								id="email"
 								className="relative block w-full appearance-none rounded-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
 								type="email"
-								placeholder="Your email"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
+								name="email"
+								placeholder="Email"
+								value={profile.email}
+								onChange={handler}
 							/>
 						</div>
+						<div class="-space-y-px rounded-md shadow-sm">
+							<label htmlFor="email">Website</label>
+							<input
+								required
+								id="website"
+								className="relative block w-full appearance-none rounded-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+								type="website"
+								placeholder="www.example.com"
+								value={profile.website}
+								onChange={handler}
+							/>
+						</div>
+						<div class="-space-y-px rounded-md shadow-sm">
+							<label htmlFor="email">Bio - tell us little bit about you</label>
+							<textarea
+								required
+								rows="8"
+								id="website"
+								className="relative block w-full appearance-none rounded-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+								type="bio"
+								placeholder=""
+								value={profile.bio}
+								onChange={handler}
+						/>
+						</div>
+						<div class="">
+							<label htmlFor="social">Social media</label>
+							<div className="flex mb-4">
+								<IoLogoFacebook size={40} className="mr-2"/>
+								<input
+									required
+									name="facebook"
+									className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+									type="website"
+									value={profile.social_media.facebook}
+									onChange={socialHandler}
+								/>
+							</div>
+							<div className="flex mb-4">
+								<IoLogoInstagram size={40} className="mr-2"/>
+								<input
+									required
+									name="instagram"
+									className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+									type="website"
+									value={profile.social_media.instagram}
+									onChange={socialHandler}
+								/>
+							</div>
+							<div className="flex  mb-4">
+								<IoLogoTwitter size={40} className="mr-2"/>
+								<input
+									required
+									name="twitter"
+									className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+									type="website"
+									value={profile.social_media.twitter}
+									onChange={socialHandler}
+								/>
+							</div>
+						</div>
 						<button className="bg-transparent text-white font-semibold py-2 px-4 border border-white rounded" aria-live="polite">
-							Send magic link
+							Submit
 						</button>
 						</form>
 					)}

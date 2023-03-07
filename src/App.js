@@ -22,9 +22,9 @@ function App() {
           <Route
             path="/create"
             element={
-              <PrivateRoute>
+            
                 <CreatePage />
-              </PrivateRoute>
+            
             }
           />
           <Route

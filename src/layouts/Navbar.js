@@ -127,7 +127,7 @@ function Navbar() {
             <GrFormClose size={30} />
           </button>
 
-          <ul className="items-center text-xl tracking-wide space-x-[24px] hidden md:flex">
+          <ul className="items-center text-xl tracking-wide space-x-[18px] hidden md:flex">
              <li>
               <Link to={"/artists"}>
                 <a

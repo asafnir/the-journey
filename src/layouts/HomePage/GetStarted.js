@@ -29,7 +29,7 @@ function GetStarted() {
           <Button
             title="Get Started"
             radius="rounded-[6px]"
-            padding="py-[14px] px-[22px] md:py-[20px] md:px-[40px]"
+            padding="py-[8px] px-[10px] md:py-[10px] md:px-[20px]"
           />
         </div>
       </div>

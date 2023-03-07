@@ -44,11 +44,11 @@ const Create = () => {
   return (
     <MainLayout>
       <div className="pb-16 pt-10">
-        <p className="text-4xl text-white text-center font-serif">Your Journey</p>
-        <p className="text-2xl text-white text-center">Capturing Memories of Self-Discovery</p>
+        <p className="text-4xl text-white font-serif">Your Journey</p>
+        <p className="text-2xl text-white">Capturing Memories of Self-Discovery</p>
       </div>
       <div className="w-full">
-        <div className="max-w-3xl m-auto">
+        <div className="max-w-2xl m-auto">
           <div className="mb-10">
             <label className="block text-2xl font-medium">Title</label>
             <div className="mt-1">
@@ -88,20 +88,20 @@ const Create = () => {
                 className="mt-1 text-black text-xl block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="I was in the ocean when ..."
               />
             </div>
-            <p className="mt-2 text-sm">Fulll description about your exprince { amount }</p>
+            <p className="mt-2 text-sm">Fulll description about your exprince</p>
           </div>
           <label htmlFor="about" className="block text-2xl font-medium ">How much you want to contribute</label>
           <div className="inline-flex">
-            <button onClick={() => setAmount(5)} className={`${amount === 5 ? 'bg-gray-400' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
+            <button onClick={() => setAmount(5)} className={`${amount === 5 ? 'bg-[gold]' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
               $5
             </button>
-            <button onClick={() => setAmount(10)} className={`${amount === 10 ? 'bg-gray-400' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
+            <button onClick={() => setAmount(10)} className={`${amount === 10 ? 'bg-[gold]' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
               $10
             </button>
-            <button onClick={() => setAmount(15)} className={`${amount === 15 ? 'bg-gray-400' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
+            <button onClick={() => setAmount(15)} className={`${amount === 15 ? 'bg-[gold]' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
               $15
             </button>
-            <button onClick={() => setAmount(20)} className={`${amount === 20 ? 'bg-gray-400' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
+            <button onClick={() => setAmount(20)} className={`${amount === 20 ? 'bg-[gold]' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
               $20
             </button>
 

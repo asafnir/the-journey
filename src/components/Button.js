@@ -3,7 +3,7 @@ import React from "react";
 function Button({
   title,
   radius = "rounded-[8px] md:rounded-[20px]",
-  padding = "py-[10px] px-[18px] md:py-[26px] md:px-[44px]",
+  padding = "py-[10px] px-[18px] md:py-[20px] md:px-[30px]",
 }) {
   return (
     <button
