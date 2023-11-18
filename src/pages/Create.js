@@ -14,7 +14,7 @@ const Create = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    createPaymentIntent()
+    // createPaymentIntent()
   }, []);
 
   const createPaymentIntent = async () => {
@@ -41,6 +41,13 @@ const Create = () => {
     appearance,
   };
 
+  const createImage = async () => {
+    const { data, error } = await supabase.functions.invoke('create-image', {
+      body: { prompt: journeyData.description },
+    })
+    console.log(data, error);
+
+  }
   return (
     <MainLayout>
       <div className="pb-16 pt-10">
@@ -110,13 +117,13 @@ const Create = () => {
               <input onChange={(e) => setAmount(e.target.value)} className="text-gray-800 font-bold py-2 px-6 border-2" placeholder="Custom price" />
             </div>
           </div>
-          {clientSecret && (
+          {/* {clientSecret && (
             <Elements options={options} stripe={stripePromise}>
               <CheckoutForm />
             </Elements>
-          )}
+          )} */}
           <div className="mt-5">
-            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Create</button>
+            <button onClick={()=>createImage()} className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Create</button>
           </div>
         </div>
       </div>

@@ -4,14 +4,17 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
 const createImage = async (prompt: string) => {
   const response = await fetch(
     `https://api.openai.com/v1/images/generations`,
     {
       body: JSON.stringify({
         prompt: prompt,
-        "n": 1,
-        size: "256x256"
       }),
       headers: {
         Authorization: `Bearer ${Deno.env.get('OPENAI_API_KEY')}`,
@@ -20,6 +23,11 @@ const createImage = async (prompt: string) => {
       method: "POST",
     },
   );
+  console.log(response)
+  if (!response.ok) {
+    console.error("Error response from OpenAI:", response);
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
   return response.json()
 }
 
@@ -29,7 +37,9 @@ serve(async (req) => {
   if (method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
-  const data = await  createImage(prompt) 
+  const response = await createImage(prompt)
+  const imageUrl = response.data.images[0].url;
+  console.log(imageUrl)
   return new Response(
     JSON.stringify(data),
     { headers: { "Content-Type": "application/json" } },
