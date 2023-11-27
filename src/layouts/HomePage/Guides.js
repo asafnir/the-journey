@@ -1,4 +1,3 @@
-import GuideCard from "components/GuideCard";
 import React from "react";
 import img1 from "assets/images/guide-img-1.svg";
 import img2 from "assets/images/guide-img-2.svg";
@@ -20,10 +19,44 @@ import img17 from "assets/images/guide-img-17.svg";
 import img18 from "assets/images/guide-img-18.svg";
 import img19 from "assets/images/guide-img-19.svg";
 import img20 from "assets/images/guide-img-20.svg";
-import Title from "components/Title";
 import p1 from "assets/images/guide-pattren.svg";
-import p2 from "assets/images/p2.svg";
 
+const GuideCard = ({ title, img, dec, link }) => {
+  // const [isOpen, setIsOpen] = useState(false);
+  // const menuRef = useRef(null);
+
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     menuRef.current.style.height = menuRef.current.scrollHeight + "px";
+  //   } else {
+  //     menuRef.current.style.height = 0 + "px";
+  //   }
+  // }, [isOpen]);
+
+  return (
+    <div
+      className="bg-black pt-[30px] pb-[30px] xl:pb-[50px] px-[20px] text-center rounded-[14px] group relative overflow-hidden"
+      // onMouseEnter={() => setIsOpen(true)}
+      // onMouseLeave={() => setIsOpen(false)}
+    >
+      <div
+        className="absolute top-0 left-0 w-full h-full bg-black p-4 opacity-0 transition-all duration-[.4s] 
+      ease-[ease] group-hover:opacity-[1] flex items-center justify-center flex-col"
+      >
+        <p className="mb-4">{dec}</p>
+        <a href={link} className="text-orange-500">More information</a>
+      </div>
+      <img
+        src={img}
+        className="w-full aspect-video object-contain mb-[20px] xl:mb-[50px] select-none pointer-events-none"
+        alt=""
+      />
+      <h1 className="text-white text-[18px] xl:text-[22px] font-bold text-center">
+        {title}
+      </h1>
+    </div>
+  );
+}
 function Guides() {
   return (
     <div className="py-[60px] sm:py-[80px] lg:py-[100px] relative z-10">
@@ -34,9 +67,9 @@ function Guides() {
       />
 
       <div className="container">
-        <Title className="text-white text-center mb-[30px] md:mb-[76px] font-serif">
+        <p className="text-white text-center mb-[30px] md:mb-[76px] font-serif">
           THE TEACHERS 
-        </Title>
+        </p>
 
         <main className="grid sm:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(4,_1fr)] gap-4 xl:gap-4 max-w-[1000px] w-full mx-auto">
           <GuideCard img={img1} title="2C-B" dec="2C-B is a psychedelic drug of the 2C family"/>

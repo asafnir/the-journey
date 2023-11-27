@@ -9,12 +9,15 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-const createImage = async (prompt: string) => {
+const createImage = async (prompt: string, substance: string) => {
   const response = await fetch(
     `https://api.openai.com/v1/images/generations`,
     {
       body: JSON.stringify({
-        prompt: prompt,
+        prompt: `${substance} journey ${prompt}`,
+        model: "dall-e-3",
+        n: 1,
+        size: "1024x1024",
       }),
       headers: {
         Authorization: `Bearer ${Deno.env.get('OPENAI_API_KEY')}`,
@@ -23,25 +26,33 @@ const createImage = async (prompt: string) => {
       method: "POST",
     },
   );
-  console.log(response)
   if (!response.ok) {
-    console.error("Error response from OpenAI:", response);
-    throw new Error(`HTTP error! status: ${response.status}`);
+    const res = await response.json();
+    console.error("Error response from OpenAI:", res);
+    throw new Error(`HTTP error! status: ${response}`);
   }
   return response.json()
 }
 
 serve(async (req) => {
   const { method } = req
-  const { prompt } = await req.json()
   if (method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
-  const response = await createImage(prompt)
-  const imageUrl = response.data.images[0].url;
-  console.log(imageUrl)
-  return new Response(
-    JSON.stringify(data),
-    { headers: { "Content-Type": "application/json" } },
-  )
+  const reqData = await req.json()
+  console.log("Here: ", reqData);
+  try {
+    const response = await createImage(reqData.prompt, reqData.substance)
+    console.log("response: ", response)
+    return new Response(JSON.stringify(response.data), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      status: 200,
+    });
+  } catch (error) {
+    console.log(error)
+    return new Response(JSON.stringify(error), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      status: 400,
+    })
+  }
 })

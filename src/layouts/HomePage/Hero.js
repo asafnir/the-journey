@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import img from "assets/images/hero-bg.png";
-import Button from "components/Button";
+import Button from "components/UI/Button";
 
 function Hero() {
   return (

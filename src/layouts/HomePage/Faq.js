@@ -1,5 +1,4 @@
-import Accordion from "components/Accordion";
-import Title from "components/Title";
+import Accordion from "components/UI/Accordion";
 import React from "react";
 import faqpattren from "assets/images/faqpattren.svg";
 
@@ -12,9 +11,9 @@ function Faq() {
           className="w-full object-cover absolute top-0 left-0 z-[-2]"
           alt=""
         />
-        <Title className="text-white text-center mb-[50px]  sm:leading-normal">
+        <p className="text-white text-center mb-[50px]  sm:leading-normal">
           Frequently Asked <br /> Questions
-        </Title>
+        </p>
 
         <main className="space-y-6">
           <Accordion title="How Can I Buy a The Journey NFT?">

@@ -1,8 +1,23 @@
 import React from "react";
 import aboutPattren from "assets/images/about-patren.svg";
-import AboutCard from "components/AboutCard";
-import Title from "components/Title";
-import Subtitle from "components/Subtitle";
+
+const AboutCard = ({ title, desc, index }) => {
+  return (
+    <div className="text-center flex flex-col items-center max-w-[250px] sm:max-w-auto mx-auto">
+      <div className="w-[60px] h-[60px] sm:w-[111px] sm:h-[111px] rounded-full flex justify-center items-center text-[30px] sm:text-[38px] font-bold bg-[rgba(0,_0,_0,_0.37)] mb-[18px] sm:mb-[22px]">
+        {index}
+      </div>
+
+      <h1 className="text-white text-center text-[24px] sm:text-[24px] font-bold mb-[12px] sm:mb-[20px] ">
+        {title}
+      </h1>
+
+      <p className="font-dm-sans text-center text-[22px] font-normal text-white">
+        {desc}
+      </p>
+    </div>
+  );
+};
 
 function About() {
   return (
@@ -17,14 +32,16 @@ function About() {
           <h1 className="text-white text-[28px] md:text-[50px] text-center mb-8 font-serif">
             About The Journeys
           </h1>
-
-          <Subtitle className="text-center text-white">
-            Journeys allows users to generate images based on their experiences using psychedelics.
+           <h2
+      className={`font-dm-sans text-base md:text-[22px] font-normal leading-6 sm:leading-8 text-center text-white`}
+    >
+        Journeys allows users to generate images based on their experiences using psychedelics.
             The generated images are said to reflect the user's experience and can be used as a visual reminder of their journey.
             The app utilizes cutting-edge machine learning techniques to generate the images and provides a creative outlet for users to
             express their psychedelic experiences. It aims to help users process, understand and remember their experience.
             The application is also a source of inspiration for those who are interested in trying psychedelics.
-          </Subtitle>
+    </h2>
+         
         </header>
       </div>
       <div className="mb-28">

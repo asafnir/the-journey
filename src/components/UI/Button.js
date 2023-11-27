@@ -7,7 +7,7 @@ function Button({
 }) {
   return (
     <button
-      className={`font-orbitron text-[#EFEFEF] text-2xl font-black ${radius} ${padding} bg-text-gradient`}
+      className={`font-orbitron text-[#] text-2xl font-black ${radius} ${padding} bg-text-gradient`}
     >
       {title}
     </button>

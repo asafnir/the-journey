@@ -8,11 +8,35 @@ module.exports = {
       'sans': ['DM Sans', 'sans-serif'],
       'serif': ['NewSpirit', 'serif']
     },
+    colors: {
+      ...colors,
+      'primary': '#05053C',
+      'amber': '#F2ECE4',
+      'cream': '#FDFCF8',
+      'brown': '#B57C71',
+      'cream-light': '#F5F1EB',
+      'soft-cream': '#FAF6EF',
+      'floral': '#FDFCF9',
+      'red': '#A63528',
+      'blue': '#62ABBC',
+      'eastern-blue':'#007E9E',
+      'sky-light': '#66B9CF',
+      'blue-light': '#d7ebef',
+      'cyan-blue':  '#DDECFA',
+      'gray': '#94918D',
+      'gray-light': '#eeeeee',
+      'sky': "#539BAD",
+      'bone': '#FDFCF9',
+      'green': '#3A8D2C',
+      'green-light': '#C5EBD2',
+      'orange': '#FF9F2D',
+      'orange-light': '#FFCA8C',
+      'mistry-purple': '#32446C',
+      'purple-light': '#EDEBFF',
+      'purple': '#5E59AF',
+      "gray-primary": "#1F1D2B"
+    },
     extend: {
-      colors: {
-        "gray-primary": "#1F1D2B",
-      },
-
       backgroundImage: {
         "text-gradient":
           "linear-gradient(101.67deg, #41bb54 27.21%, #387fe7 74.94%)",

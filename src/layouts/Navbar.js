@@ -127,14 +127,14 @@ function Navbar() {
             <GrFormClose size={30} />
           </button>
 
-          <ul className="items-center text-xl tracking-wide space-x-[18px] hidden md:flex">
+          <ul className="items-center text-xl space-x-[18px] hidden md:flex">
              <li>
               <Link to={"/artists"}>
                 <a
                   className={
                     userParams[1] == "artists"
                       ? "text-red"
-                      : "text-primary"
+                      : "text-white"
                   }
                 >
                   Artists
@@ -147,7 +147,7 @@ function Navbar() {
                   className={
                     userParams[1] == "journeys"
                       ? "text-red"
-                      : "text-primary"
+                      : "text-white"
                   }
                 >
                   Journeys
@@ -155,7 +155,7 @@ function Navbar() {
               </Link>
             </li>               
           </ul>
-          <div className="flex flex-col-reverse lg:flex-row lg:flex lg:items-center lg:space-x-[32px]">
+          <div className="flex flex-col-reverse lg:flex-row lg:flex lg:items-center lg:space-x-[24px]">
             <Link to={"/create"}>
               <a alt="create" className="w-full lg:w-auto cursor-pointer py-[12px] px-[26px] xl:px-[36px] rounded-[10px] border-[1px] border-solid border-[#D7D7D7]">
                 <span className="text-[16px] xl:text-[18px] text-[#00000063] lg:text-[#BCBCBC] font-[500] uppercase ">
