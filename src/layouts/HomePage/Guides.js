@@ -67,35 +67,35 @@ function Guides() {
       />
 
       <div className="container">
-        <p className="text-white text-center mb-[30px] md:mb-[76px] font-serif">
+        <p className="text-white text-center mb-[30px] md:mb-[76px] font-serif text-[24px] sm:text-[32px]">
           THE TEACHERS 
         </p>
 
         <main className="grid sm:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(4,_1fr)] gap-4 xl:gap-4 max-w-[1000px] w-full mx-auto">
-          <GuideCard img={img1} title="2C-B" dec="2C-B is a psychedelic drug of the 2C family"/>
-          <GuideCard img={img2} title="4-Aco-DMT" dec="Synthetic mushrooms, It is structurally related to psilocybin and psilocin, the active ingredient in psilocybin mushrooms"/>
-          <GuideCard img={img3} title="5-MEO-DMT" link="https://psychonautwiki.org/wiki/5-MeO-DMT" dec="Distributed in a wide variety of plant species as well as in the venom of a single toad species (Bufo Alvaris)"/>
-          <GuideCard img={img4} title="AMANITA MUSCARIA" />
+          <GuideCard img={img1} title="2C-B" dec="A synthetic psychedelic known for its mild effects, often used recreationally."/>
+          <GuideCard img={img2} title="4-Aco-DMT" dec="A synthetic compound with psychedelic properties, similar to psilocybin mushrooms."/>
+          <GuideCard img={img3} title="5-MEO-DMT" link="https://psychonautwiki.org/wiki/5-MeO-DMT" dec="A powerful naturally occurring psychedelic compound, known for its intense and short-lasting effects."/>
+          <GuideCard img={img4} title="AMANITA MUSCARIA" dec="A toxic mushroom with psychoactive properties, traditionally used in shamanic rituals."/>
 
-          <GuideCard img={img5} title="AYAHUASCA" />
-          <GuideCard img={img6} title="CACAO" />
-          <GuideCard img={img7} title="CANNABIS" />
-          <GuideCard img={img8} title="DATURA" />
+          <GuideCard img={img5} title="AYAHUASCA" dec="A sacred plant brew from the Amazon, used in shamanic ceremonies for its intense psychedelic effects."/>
+          <GuideCard img={img6} title="CACAO" dec="A plant used in ceremonial contexts, known for its mild psychoactive properties and as a heart opener."/>
+          <GuideCard img={img7} title="CANNABIS" dec="A widely used psychoactive plant known for its relaxing and euphoric effects."/>
+          <GuideCard img={img8} title="DATURA" dec="A highly toxic plant with strong hallucinogenic properties"/>
 
-          <GuideCard img={img9} title="DMT" />
-          <GuideCard img={img10} title="IBOGAINE" />
-          <GuideCard img={img11} title="KAMBO" />
-          <GuideCard img={img12} title="KETAMINE" />
+          <GuideCard img={img9} title="DMT" dec="A powerful and short-acting psychedelic compound found in various plants and used in ayahuasca brews."/>
+          <GuideCard img={img10} title="IBOGAINE" dec="A psychoactive substance derived from the African iboga plant, used in addiction treatment."/>
+          <GuideCard img={img11} title="KAMBO" dec="A secretion from the skin of a jungle frog used in shamanic rituals for its purgative and cleansing effects."/>
+          <GuideCard img={img12} title="KETAMINE" dec="A dissociative anesthetic with psychedelic properties, used for therapeutic purposes and recreationally."/>
 
-          <GuideCard img={img13} title="KRATOM" />
-          <GuideCard img={img14} title="LSD" />
-          <GuideCard img={img15} title="MDMA" />
-          <GuideCard img={img16} title="MESCALINE" />
+          <GuideCard img={img13} title="KRATOM" dec="A plant native to Southeast Asia, known for its stimulating and pain-relieving effects."/>
+          <GuideCard img={img14} title="LSD" dec="A synthetic hallucinogenic compound, famous for its long-lasting and mind-altering effects."/>
+          <GuideCard img={img15} title="MDMA" dec="A synthetic empathogen often referred to as ecstasy, used recreationally and in therapy for its empathetic qualities."/>
+          <GuideCard img={img16} title="MESCALINE" dec="A natural psychedelic found in cacti like peyote and San Pedro, known for its visionary experiences."/>
 
-          <GuideCard img={img17} title="PEYOTE" />
-          <GuideCard img={img18} title="SALVIA" />
-          <GuideCard img={img19} title="SAN PEDRO" />
-          <GuideCard img={img20} title="PSILOCYBIN MUSHROOMS" />
+          <GuideCard img={img17} title="PEYOTE" dec="A small cactus containing mescaline, used by indigenous cultures in religious rituals."/>
+          <GuideCard img={img18} title="SALVIA" dec="A potent and short-acting hallucinogenic plant used traditionally for its intense effects."/>
+          <GuideCard img={img19} title="SAN PEDRO" dec="A cactus containing mescaline, used in South American shamanic ceremonies."/>
+          <GuideCard img={img20} title="PSILOCYBIN MUSHROOMS" dec="Mushrooms containing psilocybin, known for their profound and introspective psychedelic experiences."/>
         </main>
       </div>
     </div>

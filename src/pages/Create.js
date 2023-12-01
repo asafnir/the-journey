@@ -5,6 +5,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import HexagonLoading from "components/HexagonLoading";
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "components/CheckoutForm";
 
@@ -22,8 +24,18 @@ const substances = [
   "Ibogaine" // Found in Tabernanthe Iboga
 ];
 const Create = () => {
-  const [selected, setSelected] = useState(substances[0])
-  const [journeyData, setJourneyDate] = useState({});
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [journeyData, setJourneyDate] = useState({
+    title: "",
+    substance: null,
+    description: "",
+  });
   const [clientSecret, setClientSecret] = useState("");
   const [image, setImage] = useState("");
   const [amount, setAmount] = useState("");
@@ -60,9 +72,25 @@ const Create = () => {
   };
 
   const createImage = async () => {
+    const { title, description, substance } = journeyData
+      // Reset error message at the start
+    setErrorMessage("");
+    if (!substance) {
+      setErrorMessage("Please select a substance.");
+      return;
+    }
+    // Validation checks
+    if (!title.trim()) {
+      setErrorMessage("Title cannot be empty.");
+      return;
+    }
+    if (!description.trim()) {
+      setErrorMessage("Description cannot be empty.");
+      return;
+    }
     setIsLoading(true)
     const { data, error } = await supabase.functions.invoke('create-image', {
-      body: { prompt: journeyData.description, substance: selected },
+      body: { prompt: description, substance },
     })
     console.log(data);
     if (error) return setIsLoading(false)
@@ -76,7 +104,7 @@ const Create = () => {
           <img className="w-1/3" src={image}/>
           <div className="">
             <p className="text-4xl text-white font-serif mb-4">{journeyData.title}</p>
-            <span className="bg-white p-2 text-brown rounded-xl font-bold">{selected}</span>
+            <span className="bg-white p-2 text-brown rounded-xl font-bold">{journeyData.substance}</span>
             <p className="text-xl text-white mt-4">{journeyData.description}</p>
           </div>
         </div>
@@ -95,10 +123,10 @@ const Create = () => {
               <div className="max-w-2xl m-auto">
                 <div className="mb-10 w-full">
                   <label className="block text-2xl font-medium">Substance</label>
-                  <Listbox value={selected} onChange={setSelected}>
+                  <Listbox value={journeyData.substance} onChange={(v)=>  setJourneyDate({...journeyData,substance: v})}>
                     <div className="relative mt-1">
                       <Listbox.Button className="w-full relative cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300">
-                        <span className="block truncate text-black text-xl">{selected}</span>
+                        <span className="block truncate text-black text-xl">{journeyData.substance ?? "Select the substance"}</span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                           <ChevronUpDownIcon
                             className="h-5 w-5 fill-black"
@@ -130,9 +158,9 @@ const Create = () => {
                                   >
                                     {substance}
                                   </span>
-                                  {selected ? (
+                                  {substance === journeyData.substance ? (
                                     <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber">
-                                      <CheckIcon className="h-5 w-5 text-black" aria-hidden="true" />
+                                      <CheckIcon className="h-5 w-5 text-black fill-black" aria-hidden="true" />
                                     </span>
                                   ) : null}
                                 </>
@@ -156,7 +184,7 @@ const Create = () => {
                     />
                   </div>
                 </div>
-                <div className="mb-10">
+                <div className="mb-4">
                   <label className="block text-2xl font-medium ">The important pieces of your journey</label>
                   <div className="mt-1">
                     <textarea
@@ -164,14 +192,14 @@ const Create = () => {
                       value={journeyData.description}
                       id="description"
                       name="description"
-                      rows="2"
+                      rows="4"
                       className="mt-1 text-black text-xl block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                       placeholder="I was in the ocean when ..."
                     />
                   </div>
                   <p className="mt-2 text-sm">Brief description about your exprince we will use this to generate the image</p>
                 </div>
-                <div className="mb-4">
+                {/* <div className="mb-4">
                   <label htmlFor="about" className="block text-2xl font-medium ">Write the full story of your journey</label>
                   <div className="mt-1">
                     <textarea
@@ -184,7 +212,7 @@ const Create = () => {
                     />
                   </div>
                   <p className="mt-2 text-sm">Fulll description about your exprince</p>
-                </div>
+                </div> */}
                 {/* <label htmlFor="about" className="block text-2xl font-medium ">How much you want to contribute</label>
                 <div className="inline-flex">
                   <button onClick={() => setAmount(5)} className={`${amount === 5 ? 'bg-[gold]' : 'bg-white'}  hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 border-2`}>
@@ -210,8 +238,9 @@ const Create = () => {
                   <CheckoutForm />
                 </Elements>
               )} */}
-                <div className="mt-5">
-                  <button onClick={() => createImage()} className="bg-white hover:bg-gray-100 text-brown font-semibold py-2 px-4 border border-gray-400 rounded shadow w-1/3">Create</button>
+                {errorMessage && <p className="text-red mb-2">{errorMessage}</p>}
+                <div className="">
+                  <button onClick={() => createImage()} className="bg-white hover:bg-gray-100 text-brown font-semibold py-3 px-4 border border-gray-400 rounded-lg shadow w-1/3 text-lg">Create</button>
                 </div>
               </div>
             </div>
